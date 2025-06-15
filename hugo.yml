@@ -1,0 +1,26 @@
+title: forwar.d
+languageCode: id-ID
+theme: hugo-blog-awesome
+baseURL: https://aspian.my.id
+
+params:
+  author:
+    intro: "Hello"
+    name: "Muhammad Aspian"
+    description: btw, i use nixos
+
+  socialIcons:
+    - name: "github"
+      url: "https://github.com/Aspiand"
+    - name: "facebook"
+      url: "https://www.facebook.com/aspiand"
+
+menu:
+  main:
+    - identifier: idk
+      name: IMPHENEN
+      url: "https://www.facebook.com/groups/1032515944638255/"
+    - identifier: categories
+      name: Categories
+      url: /categories/
+      weigh: 10
