@@ -2,6 +2,7 @@ title: forwar.d
 languageCode: id-ID
 theme: hugo-blog-awesome
 baseURL: https://aspian.my.id
+defaultContentLanguage: id
 
 params:
   author:
@@ -17,10 +18,19 @@ params:
 
 menu:
   main:
-    - identifier: idk
+    - identifier: fesnuk
       name: IMPHENEN
       url: "https://www.facebook.com/groups/1032515944638255/"
     - identifier: categories
       name: Categories
       url: /categories/
-      weigh: 10
+
+languages:
+  id:
+    contentDir: content/id
+    languageName: Indonesia
+    weight: 10
+  en:
+    contentDir: content/en
+    languageName: English
+    weight: 20
