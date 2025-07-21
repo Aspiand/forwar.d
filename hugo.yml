@@ -21,9 +21,6 @@ menu:
     - identifier: fesnuk
       name: IMPHENEN
       url: "https://www.facebook.com/groups/1032515944638255/"
-    - identifier: categories
-      name: Categories
-      url: /categories/
 
 languages:
   id:
