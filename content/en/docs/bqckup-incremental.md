@@ -20,7 +20,7 @@ bqckup:
 +   password: admin#1234 # required if incremental
 ```
 
-bqckup reads both the `domain.com.yml` and `storages.yml` configuration files, then generates a Rustic configuration file located at /etc/rustic/domain.com.toml.
+bqckup reads both the `domain.com.yml` and `storages.yml` configuration files, then generates a Rustic configuration file located at `/etc/rustic/domain.com.toml`.
 
 ## Backup
 
@@ -30,7 +30,7 @@ Backups can be performed using the same command as before:
 bqckup run
 ```
 
-bqckup executes rustic as a subprocess. Rustic then splits files into small chunks. These chunks are compressed and encrypted before being uploaded to the Restic-compatible cloud repository.
+bqckup executes rustic as a subprocess. Rustic then splits files into small chunks. These chunks are compressed and encrypted before being uploaded to the cloud repository.
 
 Each time a backup is run, Rustic creates a new snapshot that captures the current state of the files and directories being backed up.
 
