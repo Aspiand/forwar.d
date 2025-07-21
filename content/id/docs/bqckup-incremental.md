@@ -4,7 +4,7 @@ draft = true
 date = '2025-07-20T20:35:54+08:00'
 +++
 
-Pada versi [1.6.0](https://github.com/bqckup/bqckup/releases/tag/v1.6.0), bqckup memperkenalkan fitur baru, yaitu backup incremental. Bqckup menggunakan rustic untuk implementasi fitur ini. Rustic dipilih karena performa yang jauh lebih baik dari pada restic, walaupun begitu hal tersebut juga mengakibatkan penggunaan ram yang banyak. Untuk sekarang, bqckup hanya mendukung incremental backup untuk S3-compatible storage.
+Pada versi 1.6.0, bqckup memperkenalkan fitur baru, yaitu backup incremental. Bqckup menggunakan rustic untuk implementasi fitur ini. Rustic dipilih karena performa yang jauh lebih baik dari pada restic, walaupun begitu hal tersebut juga mengakibatkan penggunaan ram yang banyak. Untuk sekarang, bqckup hanya mendukung incremental backup untuk S3-compatible storage.
 
 Agar backup dilakukan dengan incremental, perlu dilakukan konfigurasi pada konfigurasi situs.
 Contoh: `domain.com.yml`
