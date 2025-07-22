@@ -8,26 +8,19 @@ date = '2025-07-21T11:35:14+08:00'
 
 For better security, storage credentials can be stored separately and retrieved via a RESTful API. To enable this feature, add the following configuration:
 
-```toml
-; /etc/bqckup/bqckup.cnf
-[storage]
-remote_storage_endpoint=
-```
-
 ```yaml
 # /etc/bqckup/config/storages.yml
 storages:
   dummy:
     bucket: dummy
     primary: no
-+   remote: yes
++   remote_url: https://domain.com/api/get?token=894211610151115239
 ```
 
 Ensure that the target URL follows the specifications below.
 
 ```text
-GET {base_url}/{bucket_name}
-bucket_name: string|required
+GET
 ```
 
 `404`: Not Found
@@ -36,6 +29,7 @@ bucket_name: string|required
 
 ```json
 {
+    "bucket": "string",
     "access_key_id": "string",
     "secret_access_key": "string",
     "endpoint": "string|url",

@@ -8,26 +8,19 @@ date = '2025-07-21T10:43:37+08:00'
 
 Untuk keamanan yang lebih baik, kredensial storage dapat disimpan ditempat lain dan diambil dengan Restfull API. Untuk menggunakan fitur ini tambahkan konfigurasi berikut:
 
-```toml
-; /etc/bqckup/bqckup.cnf
-[storage]
-remote_storage_endpoint=
-```
-
 ```yaml
 # /etc/bqckup/config/storages.yml
 storages:
   dummy:
     bucket: dummy
     primary: no
-+   remote: yes
++   remote_url: https://domain.com/api/get?token=894211610151115239
 ```
 
 Passtikan url yang dituju mengikuti spesifikasi berikut.
 
 ```text
-GET {base_url}/{bucket_name}
-bucket_name: string|required
+GET
 ```
 
 `404`: Not Found
@@ -36,6 +29,7 @@ bucket_name: string|required
 
 ```json
 {
+    "bucket": "string",
     "access_key_id": "string",
     "secret_access_key": "string",
     "endpoint": "string|url",
