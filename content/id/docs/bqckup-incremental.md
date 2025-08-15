@@ -1,6 +1,6 @@
 +++
 title = 'Bqckup Incremental'
-draft = true
+draft = false
 date = '2025-07-20T20:35:54+08:00'
 +++
 

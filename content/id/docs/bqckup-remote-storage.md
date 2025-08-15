@@ -1,6 +1,6 @@
 +++
 title = 'Bqckup Remote Storage'
-draft = true
+draft = false
 date = '2025-07-21T10:43:37+08:00'
 +++
 
@@ -12,8 +12,6 @@ Untuk keamanan yang lebih baik, kredensial storage dapat disimpan ditempat lain 
 # /etc/bqckup/config/storages.yml
 storages:
   dummy:
-    bucket: dummy
-    primary: no
 +   remote_url: https://domain.com/api/get?token=894211610151115239
 ```
 
