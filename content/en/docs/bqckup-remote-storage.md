@@ -59,7 +59,7 @@ Method: `POST`
 
 `201`: Create Success
 
-Konfigurasi URL:
+Webhook configuration:
 
 `/etc/bqckup/bqckup.cnf`
 
