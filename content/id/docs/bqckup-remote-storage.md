@@ -8,8 +8,9 @@ date = '2025-07-21T10:43:37+08:00'
 
 Untuk keamanan yang lebih baik, kredensial storage dapat disimpan ditempat lain dan diambil dengan Restfull API. Untuk menggunakan fitur ini tambahkan konfigurasi berikut:
 
+`/etc/bqckup/config/storages.yml`
+
 ```yaml
-# /etc/bqckup/config/storages.yml
 storages:
   dummy:
 +   remote_url: https://domain.com/api/get?token=894211610151115239
@@ -17,9 +18,7 @@ storages:
 
 Passtikan url yang dituju mengikuti spesifikasi berikut.
 
-```text
-GET
-```
+Method: `GET`
 
 `404`: Not Found
 
@@ -41,9 +40,7 @@ Setelah melakukan backup dan `after_backup_completed` di set, bqckup akan mengir
 
 Passtikan url yang dituju mengikuti spesifikasi berikut:
 
-```text
-POST {base_url}
-```
+Method: `POST`
 
 Body
 
@@ -62,10 +59,11 @@ Body
 
 `201`: Create Success
 
-Konfigurasi URL:
+Konfigurasi Webhook:
+
+`/etc/bqckup/bqckup.cnf`
 
 ```toml
-; /etc/bqckup/bqckup.cnf
 [webhooks]
 after_backup_completed=
 ```

@@ -4,7 +4,7 @@ draft = false
 date = '2025-07-21T07:28:02+08:00'
 +++
 
-As of version 1.6.0, bqckup introduces a new feature: incremental backups. This functionality is implemented using Rustic, which was chosen due to its significantly better performance compared to Restic. However, this performance improvement comes at the cost of higher RAM usage.
+As of version 1.6.0, bqckup introduces a new feature: incremental backups. This functionality is implemented using Rustic, which was chosen due to its significantly better performance compared to Restic.
 
 Currently, bqckup supports incremental backups only for S3-compatible storage.
 

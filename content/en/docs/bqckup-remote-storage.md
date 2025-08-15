@@ -8,20 +8,17 @@ date = '2025-07-21T11:35:14+08:00'
 
 For better security, storage credentials can be stored separately and retrieved via a RESTful API. To enable this feature, add the following configuration:
 
+`/etc/bqckup/config/storages.yml`
+
 ```yaml
-# /etc/bqckup/config/storages.yml
 storages:
   dummy:
-    bucket: dummy
-    primary: no
 +   remote_url: https://domain.com/api/get?token=894211610151115239
 ```
 
 Ensure that the target URL follows the specifications below.
 
-```text
-GET
-```
+Method: `GET`
 
 `404`: Not Found
 
@@ -43,9 +40,7 @@ After completing a backup and `after_backup_completed` configuration is set, bqc
 
 Ensure that the target URL follows the specifications below.
 
-```text
-POST {base_url}
-```
+Method: `POST`
 
 **Body:**
 
@@ -66,8 +61,9 @@ POST {base_url}
 
 Konfigurasi URL:
 
+`/etc/bqckup/bqckup.cnf`
+
 ```toml
-; /etc/bqckup/bqckup.cnf
 [webhooks]
 after_backup_completed=
 ```
