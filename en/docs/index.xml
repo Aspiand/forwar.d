@@ -1,1 +1,31 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Docs on forwar.d</title><link>https://aspiand.github.io/forwar.d/en/docs/</link><description>Recent content in Docs on forwar.d</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 21 Jul 2025 11:35:14 +0800</lastBuildDate><atom:link href="https://aspiand.github.io/forwar.d/en/docs/index.xml" rel="self" type="application/rss+xml"/></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Docs on forwar.d</title><link>https://aspiand.github.io/forwar.d/en/docs/</link><description>Recent content in Docs on forwar.d</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 21 Jul 2025 11:35:14 +0800</lastBuildDate><atom:link href="https://aspiand.github.io/forwar.d/en/docs/index.xml" rel="self" type="application/rss+xml"/><item><title>Bqckup Remote Storage</title><link>https://aspiand.github.io/forwar.d/en/docs/bqckup-remote-storage/</link><pubDate>Mon, 21 Jul 2025 11:35:14 +0800</pubDate><guid>https://aspiand.github.io/forwar.d/en/docs/bqckup-remote-storage/</guid><description>&lt;h2 id="remote-storage">Remote Storage&lt;/h2>
+&lt;p>For better security, storage credentials can be stored separately and retrieved via a RESTful API. To enable this feature, add the following configuration:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># /etc/bqckup/config/storages.yml&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">storages&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">dummy&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">bucket&lt;/span>: &lt;span style="color:#ae81ff">dummy&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">primary&lt;/span>: &lt;span style="color:#66d9ef">no&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">+ remote_url&lt;/span>: &lt;span style="color:#ae81ff">https://domain.com/api/get?token=894211610151115239&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Ensure that the target URL follows the specifications below.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>GET
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;code>404&lt;/code>: Not Found&lt;/p>
+&lt;p>&lt;code>200&lt;/code>: OK&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-json" data-lang="json">&lt;span style="display:flex;">&lt;span>{
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;bucket&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;string&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;access_key_id&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;string&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;secret_access_key&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;string&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;endpoint&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;string|url&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;region&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;string&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="backup-notification">Backup Notification&lt;/h2>
+&lt;p>After completing a backup and &lt;code>after_backup_completed&lt;/code> configuration is set, bqckup will send relevant backup data to url.&lt;/p></description></item><item><title>Incremental Bqckup</title><link>https://aspiand.github.io/forwar.d/en/docs/bqckup-incremental/</link><pubDate>Mon, 21 Jul 2025 07:28:02 +0800</pubDate><guid>https://aspiand.github.io/forwar.d/en/docs/bqckup-incremental/</guid><description>&lt;p>As of version 1.6.0, bqckup introduces a new feature: incremental backups. This functionality is implemented using Rustic, which was chosen due to its significantly better performance compared to Restic. However, this performance improvement comes at the cost of higher RAM usage.&lt;/p>
+&lt;p>Currently, bqckup supports incremental backups only for S3-compatible storage.&lt;/p>
+&lt;p>To enable incremental backups, you need to update the site configuration file accordingly.
+Example &lt;code>domain.com.yml&lt;/code>:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-diff" data-lang="diff">&lt;span style="display:flex;">&lt;span>bqckup:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> name: domain.com
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> enabled: yes
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">+ incremental:
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">+ enable: yes
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">+ password: admin#1234 # required if incremental
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>bqckup reads both the &lt;code>domain.com.yml&lt;/code> and &lt;code>storages.yml&lt;/code> configuration files, then generates a Rustic configuration file located at &lt;code>/etc/rustic/domain.com.toml&lt;/code>.&lt;/p></description></item></channel></rss>
