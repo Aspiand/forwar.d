@@ -1,7 +1,7 @@
 title: forwar.d
 languageCode: id-ID
 theme: hugo-blog-awesome
-baseURL: https://aspian.my.id
+baseURL: https://aspiand.github.io/forwar.d
 defaultContentLanguage: id
 
 params:
