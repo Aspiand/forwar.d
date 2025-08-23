@@ -6,7 +6,7 @@ date = '2025-07-21T10:43:37+08:00'
 
 ## Remote Storage
 
-Untuk keamanan yang lebih baik, kredensial storage dapat disimpan ditempat lain dan diambil dengan Restfull API. Untuk menggunakan fitur ini tambahkan konfigurasi berikut:
+Untuk keamanan yang lebih baik, kredensial storage dapat disimpan ditempat lain dan diambil dengan RESTful API. Untuk menggunakan fitur ini tambahkan konfigurasi berikut:
 
 `/etc/bqckup/config/storages.yml`
 

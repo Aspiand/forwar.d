@@ -28,7 +28,7 @@ Backup dapat dilakukan menggunakan command yang sama dengan sebelumnya.
 bqckup run
 ```
 
-Bqckup akan menjalankan `rustic` sebagai *subprocess*, kemudian rustic memecah file menjadi chunk-chunk kecil. Chunk akan dikompress dan dienkripsi sebelum disimpan ke repository restic yang ada di cloud. Ketika backup dijalankan, rustic akan membuat snapshot baru yang berisi kondisi file dan directory yang dibackup.
+Bqckup akan menjalankan `rustic` sebagai *subprocess*, kemudian rustic memecah file menjadi chunk-chunk kecil. Chunk akan dikompress dan dienkripsi sebelum disimpan ke repository rustic yang ada di cloud. Ketika backup dijalankan, rustic akan membuat snapshot baru yang berisi kondisi file dan directory yang dibackup.
 
 ## Restore
 
@@ -37,6 +37,12 @@ Untuk melakukan restore, terdapat perintah baru yang dibuat khusus untuk hal ini
 ```sh
 bqckup restore {site_name} --snapshot {snapshot_id|default:latest} --target {target_dir|default:directory_source}
 ```
+
+`site_name`: nama dari konfigurasi situs (contoh: domain.com)
+
+`--snapshot`: opsional; tentukan ID snapshot yang akan dipulihkan. Jika tidak diberikan, snapshot terbaru yang akan digunakan.
+
+`--target`: opsional; tentukan direktori tujuan untuk memulihkan file. Secara default, file akan dipulihkan ke direktori sumber aslinya.
 
 Snapshot id dapat dilihat pada history backup
 
