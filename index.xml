@@ -1,29 +1,29 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>forwar.d</title><link>https://aspiand.github.io/forwar.d/</link><description>Recent content on forwar.d</description><generator>Hugo -- gohugo.io</generator><language>id</language><lastBuildDate>Mon, 21 Jul 2025 10:43:37 +0800</lastBuildDate><atom:link href="https://aspiand.github.io/forwar.d/index.xml" rel="self" type="application/rss+xml"/><item><title>Bqckup Remote Storage</title><link>https://aspiand.github.io/forwar.d/docs/bqckup-remote-storage/</link><pubDate>Mon, 21 Jul 2025 10:43:37 +0800</pubDate><guid>https://aspiand.github.io/forwar.d/docs/bqckup-remote-storage/</guid><description>&lt;h2 id="remote-storage">Remote Storage&lt;/h2>
-&lt;p>Untuk keamanan yang lebih baik, kredensial storage dapat disimpan ditempat lain dan diambil dengan RESTful API. Untuk menggunakan fitur ini tambahkan konfigurasi berikut:&lt;/p>
-&lt;p>&lt;code>/etc/bqckup/config/storages.yml&lt;/code>&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">storages&lt;/span>:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">dummy&lt;/span>:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">+ remote_url&lt;/span>: &lt;span style="color:#ae81ff">https://domain.com/api/get?token=894211610151115239&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Passtikan url yang dituju mengikuti spesifikasi berikut.&lt;/p>
-&lt;p>Method: &lt;code>GET&lt;/code>&lt;/p>
-&lt;p>&lt;code>404&lt;/code>: Not Found&lt;/p>
-&lt;p>&lt;code>200&lt;/code>: OK&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-json" data-lang="json">&lt;span style="display:flex;">&lt;span>{
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;bucket&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;string&amp;#34;&lt;/span>,
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;access_key_id&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;string&amp;#34;&lt;/span>,
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;secret_access_key&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;string&amp;#34;&lt;/span>,
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;endpoint&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;string|url&amp;#34;&lt;/span>,
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;region&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;string&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="backup-notification">Backup Notification&lt;/h2>
-&lt;p>Setelah melakukan backup dan &lt;code>after_backup_completed&lt;/code> di set, bqckup akan mengirim data terkait backup.&lt;/p>
-&lt;p>Passtikan url yang dituju mengikuti spesifikasi berikut:&lt;/p></description></item><item><title>Bqckup Incremental</title><link>https://aspiand.github.io/forwar.d/docs/bqckup-incremental/</link><pubDate>Sun, 20 Jul 2025 20:35:54 +0800</pubDate><guid>https://aspiand.github.io/forwar.d/docs/bqckup-incremental/</guid><description>&lt;p>Pada versi &lt;a href="https://github.com/bqckup/bqckup/releases/tag/v1.6.0">1.6.0&lt;/a>, bqckup memperkenalkan fitur baru, yaitu backup incremental. Bqckup menggunakan rustic untuk implementasi fitur ini. Rustic dipilih karena performa yang jauh lebih baik dari pada restic. Untuk sekarang, bqckup hanya mendukung incremental backup untuk S3-compatible storage.&lt;/p>
-&lt;p>Agar backup dilakukan dengan incremental, perlu dilakukan konfigurasi pada situs.
-Contoh: &lt;code>domain.com.yml&lt;/code>&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-diff" data-lang="diff">&lt;span style="display:flex;">&lt;span>bqckup:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> name: domain.com
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> enabled: yes
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">+ incremental:
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">+ enable: yes
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">+ password: admin#1234 # required if incremental
-&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Bqckup akan membaca file &lt;code>domain.com.yml&lt;/code> dan &lt;code>storages.yml&lt;/code> lalu membuat konfigurasi rustic yang terletak pada &lt;code>/etc/rustic/domain.com.toml&lt;/code>.&lt;/p></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>forwar.d</title><link>https://aspiand.github.io/forwar.d/</link><description>Recent content on forwar.d</description><generator>Hugo -- gohugo.io</generator><language>id</language><lastBuildDate>Mon, 21 Jul 2025 10:43:37 +0800</lastBuildDate><atom:link href="https://aspiand.github.io/forwar.d/index.xml" rel="self" type="application/rss+xml"/><item><title>Bqckup Remote Storage</title><link>https://aspiand.github.io/forwar.d/docs/bqckup-remote-storage/</link><pubDate>Mon, 21 Jul 2025 10:43:37 +0800</pubDate><guid>https://aspiand.github.io/forwar.d/docs/bqckup-remote-storage/</guid><description>&lt;h2 id="remote-storage"&gt;Remote Storage&lt;/h2&gt;
+&lt;p&gt;Untuk keamanan yang lebih baik, kredensial storage dapat disimpan ditempat lain dan diambil dengan RESTful API. Untuk menggunakan fitur ini tambahkan konfigurasi berikut:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;/etc/bqckup/config/storages.yml&lt;/code&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-yaml" data-lang="yaml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;storages&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;dummy&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;+ remote_url&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;https://domain.com/api/get?token=894211610151115239&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Passtikan url yang dituju mengikuti spesifikasi berikut.&lt;/p&gt;
+&lt;p&gt;Method: &lt;code&gt;GET&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;404&lt;/code&gt;: Not Found&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;200&lt;/code&gt;: OK&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-json" data-lang="json"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;&amp;#34;bucket&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;string&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;&amp;#34;access_key_id&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;string&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;&amp;#34;secret_access_key&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;string&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;&amp;#34;endpoint&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;string|url&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;&amp;#34;region&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;string&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="backup-notification"&gt;Backup Notification&lt;/h2&gt;
+&lt;p&gt;Setelah melakukan backup dan &lt;code&gt;after_backup_completed&lt;/code&gt; di set, bqckup akan mengirim data terkait backup.&lt;/p&gt;
+&lt;p&gt;Passtikan url yang dituju mengikuti spesifikasi berikut:&lt;/p&gt;</description></item><item><title>Bqckup Incremental</title><link>https://aspiand.github.io/forwar.d/docs/bqckup-incremental/</link><pubDate>Sun, 20 Jul 2025 20:35:54 +0800</pubDate><guid>https://aspiand.github.io/forwar.d/docs/bqckup-incremental/</guid><description>&lt;p&gt;Pada versi &lt;a href="https://github.com/bqckup/bqckup/releases/tag/v1.6.0"&gt;1.6.0&lt;/a&gt;, bqckup memperkenalkan fitur baru, yaitu backup incremental. Bqckup menggunakan rustic untuk implementasi fitur ini. Rustic dipilih karena performa yang jauh lebih baik dari pada restic. Untuk sekarang, bqckup hanya mendukung incremental backup untuk S3-compatible storage.&lt;/p&gt;
+&lt;p&gt;Agar backup dilakukan dengan incremental, perlu dilakukan konfigurasi pada situs.
+Contoh: &lt;code&gt;domain.com.yml&lt;/code&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-diff" data-lang="diff"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;bqckup:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; name: domain.com
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; enabled: yes
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;+ incremental:
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;+ enable: yes
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;+ password: admin#1234 # required if incremental
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Bqckup akan membaca file &lt;code&gt;domain.com.yml&lt;/code&gt; dan &lt;code&gt;storages.yml&lt;/code&gt; lalu membuat konfigurasi rustic yang terletak pada &lt;code&gt;/etc/rustic/domain.com.toml&lt;/code&gt;.&lt;/p&gt;</description></item></channel></rss>
