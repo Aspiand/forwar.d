@@ -24,10 +24,8 @@ menu:
 
 languages:
   id:
-    contentDir: content/id
     languageName: Indonesia
     weight: 10
   en:
-    contentDir: content/en
     languageName: English
     weight: 20
